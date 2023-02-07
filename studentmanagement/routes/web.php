@@ -29,3 +29,6 @@ Route::get('/masud', function () {
 Route::get('/student', [StudentController::class, 'index']);
 Route::get('/adddata', [StudentController::class, 'addData']);
 Route::post('/store-data', [StudentController::class, 'storeData']);
+
+
+route::get("/practice",[StudentController::class,"index"]);
