@@ -24,7 +24,7 @@
 
 <div class="container">
     <a href="{{url('/student')}}" class="btn btn-primary my-3">Show Data</a>
-    @if ($errors->any())
+    <!-- @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -32,23 +32,34 @@
             @endforeach
         </ul>
     </div>
-    @endif
+    @endif -->
+@if(Session::has('msg'))
+ <p class="alert alert-success"> {{Session::get('msg')}}</p>
+@endif
     <form action="{{url('/store-data')}}" method="post">
         @csrf
         <div class="form-group">
             <label for="">FirstName</label>
             <input type="text" class="form-control" placeholder="Enter your firstname" name="FirstName">
         </div>
+        @error("FirstName")
+         <span class="text-danger"> {{$message}} </span>
+        @enderror
 
         <div class="form-group">
             <label for="">LastName</label>
-            <input type="text" class="form-control" name="LastName" placeholder="Enter your lastname">
+            <input type="text" class="form-control" placeholder="Enter your firstname" name="LastName">
         </div>
-
+        @error("LastName")
+         <span class="text-danger"> {{$message}} </span>
+        @enderror
         <div class="form-group">
             <label for="">Gender</label>
             <input type="text" class="form-control" name="Gender" placeholder="Enter your Gender">
         </div>
+        @error("Gender")
+         <span class="text-danger"> {{$message}} </span>
+        @enderror
         <!-- <div class="form-group">
             <label for="">Religion</label>
             <input type="text" class="form-control" name="Religion" placeholder="Enter your Religion">

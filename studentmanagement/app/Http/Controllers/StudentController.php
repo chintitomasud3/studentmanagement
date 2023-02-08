@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Session;
 
 class StudentController extends Controller
 {
@@ -14,7 +15,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view("student");
+        $showData=Student::all();
+        //print_r($showData);
+        return view("student",compact("showData"));
     }
 
 
@@ -30,9 +33,23 @@ class StudentController extends Controller
 
        ];
 
-       $this->validate($request,$rules);
+       $cm=[
+        'FirstName.required'=>'Enter your First name',
+        'LastName.required'=>'Enter your Last name',
+        'Gender.required'=>'Enter your Gender',
 
-        return $request->all();
+       ];
+
+       $this->validate($request,$rules,$cm);
+              
+       $student=new Student();
+       $student->FirstName=$request->FirstName;
+       $student->LastName=$request->LastName;
+       $student->Gender=$request->Gender;
+       $student->save();
+       Session::flash('msg',"Data successfully Added");
+         //return $request->all();
+         return redirect()->back();
     }
     /**
      * Show the form for creating a new resource.

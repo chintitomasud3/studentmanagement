@@ -18,10 +18,7 @@ class CreateStudentsTable extends Migration
             $table->string("FirstName");
             $table->string("LastName");
             $table->string("Gender");
-            $table->string("Religion");
-            $table->string("Email");
-            $table->string("PhoneNumber");
-            $table->string("Batch");
+            $table->timestamps();
             
 
         });
