@@ -15,7 +15,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $showData=Student::all();
+        //$showData=Student::all();
+        $showData=Student::paginate(3);
         //print_r($showData);
         return view("student",compact("showData"));
     }
@@ -29,7 +30,8 @@ class StudentController extends Controller
     public function storeData(Request $request){
        $rules=[
            'FirstName'=>'required',
-           'LastName'=>'required'
+           'LastName'=>'required',
+            'Gender'=>'required'
 
        ];
 
@@ -49,7 +51,8 @@ class StudentController extends Controller
        $student->save();
        Session::flash('msg',"Data successfully Added");
          //return $request->all();
-         return redirect()->back();
+         return redirect("/student")
+         ;
     }
     /**
      * Show the form for creating a new resource.

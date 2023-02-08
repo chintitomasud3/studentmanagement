@@ -33,9 +33,8 @@
         </ul>
     </div>
     @endif -->
-@if(Session::has('msg'))
- <p class="alert alert-success"> {{Session::get('msg')}}</p>
-@endif
+
+
     <form action="{{url('/store-data')}}" method="post">
         @csrf
         <div class="form-group">

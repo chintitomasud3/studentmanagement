@@ -15,6 +15,9 @@
 <body>
 <div class="container">
     <a href="{{url('/adddata')}}" class="btn btn-primary my-3">Add Student</a>
+    @if(Session::has('msg'))
+    <p class="alert alert-success"> {{Session::get('msg')}}</p>
+    @endif
     <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
@@ -27,7 +30,7 @@
         <tbody>
             @foreach($showData as $key=>$data)
             <tr>
-              <td> {{$key+1}} </td>
+              <td> {{$data->id}} </td>
               <td> {{$data->FirstName}}</td>
               <td> {{$data->LastName}}</td>
               <td> {{$data->Gender}}</td>
@@ -36,6 +39,7 @@
            @endforeach
         </tbody>
     </table>
+    {{$showData->links()}}
 </div>
 
     <!-- Optional JavaScript -->
