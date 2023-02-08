@@ -25,6 +25,7 @@
                 <th scope="col">FirstName</th>
                 <th scope="col">LastName</th>
                 <th scope="col">Gender</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -34,6 +35,11 @@
               <td> {{$data->FirstName}}</td>
               <td> {{$data->LastName}}</td>
               <td> {{$data->Gender}}</td>
+              <td> 
+                <a class="btn btn-success" href="{{url('/edit-data/'.$data->id)}}">Edit</a>
+                <a class="btn btn-danger" href="">Delete</a>
+
+              </td>
 
            </tr>
            @endforeach

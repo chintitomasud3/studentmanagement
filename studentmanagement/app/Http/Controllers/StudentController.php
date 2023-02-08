@@ -54,6 +54,15 @@ class StudentController extends Controller
          return redirect("/student")
          ;
     }
+
+     public function editData($id=null){
+
+        
+        return $id;
+
+     }
+
+
     /**
      * Show the form for creating a new resource.
      *
