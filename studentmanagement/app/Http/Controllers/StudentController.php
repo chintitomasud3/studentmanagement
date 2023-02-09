@@ -57,10 +57,41 @@ class StudentController extends Controller
 
      public function editData($id=null){
 
-        
-        return $id;
+        $studentedit=Student::find($id);
+        return view("edit-data",compact("studentedit"));
 
      }
+
+
+     public function updateData(Request $request,$id){
+        $rules=[
+            'FirstName'=>'required',
+            'LastName'=>'required',
+             'Gender'=>'required'
+ 
+        ];
+ 
+        $cm=[
+         'FirstName.required'=>'Enter your First name',
+         'LastName.required'=>'Enter your Last name',
+         'Gender.required'=>'Enter your Gender',
+ 
+        ];
+ 
+        $this->validate($request,$rules,$cm);
+               
+        // $student=new Student();
+        $student=Student::find($id);
+        $student->FirstName=$request->FirstName;
+        $student->LastName=$request->LastName;
+        $student->Gender=$request->Gender;
+        $student->save();
+        Session::flash('msg',"Data successfully Updated");
+          //return $request->all();
+          return redirect("/student")
+          ;
+     }
+ 
 
 
     /**
