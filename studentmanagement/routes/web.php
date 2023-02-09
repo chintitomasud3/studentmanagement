@@ -31,4 +31,4 @@ Route::get('/adddata', [StudentController::class, 'addData']);
 Route::post('/store-data', [StudentController::class, 'storeData']);
 Route::get('/edit-data/{id}', [StudentController::class, 'editData']);
 Route::post('/update-data/{id}', [StudentController::class, 'updateData']);
-
+Route::get('/delete-data/{id}',[StudentController::class,'deleteData']);

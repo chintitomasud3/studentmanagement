@@ -91,7 +91,13 @@ class StudentController extends Controller
           return redirect("/student")
           ;
      }
- 
+        public function deleteData($id=null){
+            $student=Student::find($id);
+            $student->delete();
+            Session::flash('msg',"Data successfully deleted");
+            return redirect("/student");
+
+   }
 
 
     /**

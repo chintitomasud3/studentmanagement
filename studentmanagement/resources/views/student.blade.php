@@ -37,7 +37,7 @@
               <td> {{$data->Gender}}</td>
               <td> 
                 <a class="btn btn-success" href="{{url('/edit-data/'.$data->id)}}">Edit</a>
-                <a class="btn btn-danger" href="">Delete</a>
+                <a class="btn btn-danger" href="{{url('/delete-data/'.$data->id)}}" onclick="return confirm('are you sure')">Delete</a>
 
               </td>
 
