@@ -42,7 +42,7 @@
             <input type="text" class="form-control" placeholder="Enter your firstname" name="FirstName">
         </div>
         @error("FirstName")
-         <span class="text-danger"> {{$message}} </span>
+        <span class="text-danger"> {{$message}} </span>
         @enderror
 
         <div class="form-group">
@@ -50,14 +50,29 @@
             <input type="text" class="form-control" placeholder="Enter your firstname" name="LastName">
         </div>
         @error("LastName")
-         <span class="text-danger"> {{$message}} </span>
+        <span class="text-danger"> {{$message}} </span>
         @enderror
+
+
         <div class="form-group">
-            <label for="">Gender</label>
-            <input type="text" class="form-control" name="Gender" placeholder="Enter your Gender">
+            <label for="">Gender: </label>
+            <select class="form-select" aria-label="Default select example" name="Gender">
+                <!-- <option selected>Open this select menu</option> -->
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
         </div>
         @error("Gender")
-         <span class="text-danger"> {{$message}} </span>
+        <span class="text-danger"> {{$message}} </span>
+        @enderror
+
+        <div class="form-group">
+            <label for="">Email</label>
+            <input type="text" class="form-control" name="email" placeholder="Enter your Email">
+        </div>
+        @error("email")
+        <span class="text-danger"> {{$message}} </span>
         @enderror
         <!-- <div class="form-group">
             <label for="">Religion</label>

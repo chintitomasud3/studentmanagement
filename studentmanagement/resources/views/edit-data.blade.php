@@ -42,7 +42,7 @@
             <input type="text" class="form-control" placeholder="Enter your firstname" name="FirstName" value="{{$studentedit->FirstName}}">
         </div>
         @error("FirstName")
-         <span class="text-danger"> {{$message}} </span>
+        <span class="text-danger"> {{$message}} </span>
         @enderror
 
         <div class="form-group">
@@ -50,14 +50,22 @@
             <input type="text" class="form-control" placeholder="Enter your firstname" name="LastName" value="{{$studentedit->LastName}}">
         </div>
         @error("LastName")
-         <span class="text-danger"> {{$message}} </span>
+        <span class="text-danger"> {{$message}} </span>
         @enderror
         <div class="form-group">
             <label for="">Gender</label>
             <input type="text" class="form-control" name="Gender" placeholder="Enter your Gender" value="{{$studentedit->Gender}}">
         </div>
         @error("Gender")
-         <span class="text-danger"> {{$message}} </span>
+        <span class="text-danger"> {{$message}} </span>
+        @enderror
+
+        <div class="form-group">
+            <label for="">Gender</label>
+            <input type="text" class="form-control" name="email" placeholder="Enter your Email" value="{{$studentedit->email}}">
+        </div>
+        @error("email")
+        <span class="text-danger"> {{$message}} </span>
         @enderror
         <!-- <div class="form-group">
             <label for="">Religion</label>

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\StudentController;
-
+use App\Http\Controllers\EnrollmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,14 +21,14 @@ Route::get('/', function () {
 });
 
 
-Route::get('/masud', function () {
-    return view('masud');
-});
 
 
-Route::get('/student', [StudentController::class, 'index']);
-Route::get('/adddata', [StudentController::class, 'addData']);
+Route::get('/student', [StudentController::class, 'index'])->name('student.index');
+Route::get('/adddata', [StudentController::class, 'addData'])->name('student.adddata');
 Route::post('/store-data', [StudentController::class, 'storeData']);
 Route::get('/edit-data/{id}', [StudentController::class, 'editData']);
 Route::post('/update-data/{id}', [StudentController::class, 'updateData']);
 Route::get('/delete-data/{id}',[StudentController::class,'deleteData']);
+
+
+Route::get('/enrollment', [EnrollmentController::class, 'index']);

@@ -18,6 +18,8 @@ class CreateStudentsTable extends Migration
             $table->string("FirstName");
             $table->string("LastName");
             $table->string("Gender");
+            $table->string('email');
+            // $table->unsignedBigInteger('enrollment_id');
             $table->timestamps();
             
 

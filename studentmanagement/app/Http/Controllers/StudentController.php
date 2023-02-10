@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class StudentController extends Controller
 {
@@ -31,7 +31,8 @@ class StudentController extends Controller
        $rules=[
            'FirstName'=>'required',
            'LastName'=>'required',
-            'Gender'=>'required'
+            'Gender'=>'required',
+            'email'=>'required'
 
        ];
 
@@ -39,6 +40,7 @@ class StudentController extends Controller
         'FirstName.required'=>'Enter your First name',
         'LastName.required'=>'Enter your Last name',
         'Gender.required'=>'Enter your Gender',
+        'email.required'=>'Enter your email'
 
        ];
 
@@ -48,6 +50,7 @@ class StudentController extends Controller
        $student->FirstName=$request->FirstName;
        $student->LastName=$request->LastName;
        $student->Gender=$request->Gender;
+       $student->email=$request->email;
        $student->save();
        Session::flash('msg',"Data successfully Added");
          //return $request->all();
@@ -67,7 +70,8 @@ class StudentController extends Controller
         $rules=[
             'FirstName'=>'required',
             'LastName'=>'required',
-             'Gender'=>'required'
+             'Gender'=>'required',
+            'email' => 'required'
  
         ];
  
@@ -75,6 +79,7 @@ class StudentController extends Controller
          'FirstName.required'=>'Enter your First name',
          'LastName.required'=>'Enter your Last name',
          'Gender.required'=>'Enter your Gender',
+          'email.required' => 'Enter your email'
  
         ];
  
@@ -85,6 +90,7 @@ class StudentController extends Controller
         $student->FirstName=$request->FirstName;
         $student->LastName=$request->LastName;
         $student->Gender=$request->Gender;
+        $student->email = $request->email;
         $student->save();
         Session::flash('msg',"Data successfully Updated");
           //return $request->all();
