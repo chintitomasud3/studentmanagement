@@ -21,18 +21,7 @@ class EnrollmentController extends Controller
         ->join('courses', 'enrollments.course_id', '=', 'courses.id')
         ->select('students.FirstName', 'enrollments.enrollment_date','courses.name')
         ->paginate(5);
-
-
-
-
-
-
-
-
-
-
-
-        print_r($enrollments);
+         print_r($enrollments);
         return view("enrollment",compact("enrollments"));
         //
     }

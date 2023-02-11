@@ -21,13 +21,13 @@ class StudentController extends Controller
 
         //return response()->json($showData);
         //print_r($showData);
-        return view("student1",compact("showData"));
+        return view("students.student1",compact("showData"));
     }
 
 
     public function addData(){
  
-         return view("adddata");
+         return view("students.adddata");
     }
 
     public function storeData(Request $request){
@@ -64,7 +64,7 @@ class StudentController extends Controller
      public function editData($id=null){
 
         $studentedit=Student::find($id);
-        return view("edit-data",compact("studentedit"));
+        return view("students.edit-data",compact("studentedit"));
 
      }
 
@@ -106,7 +106,35 @@ class StudentController extends Controller
             Session::flash('msg',"Data successfully deleted");
             return redirect("/student");
 
-   }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     /**
