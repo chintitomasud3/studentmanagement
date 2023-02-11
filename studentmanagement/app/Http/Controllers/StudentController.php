@@ -17,8 +17,11 @@ class StudentController extends Controller
     {
         //$showData=Student::all();
         $showData=Student::paginate(3);
+
+
+        //return response()->json($showData);
         //print_r($showData);
-        return view("student",compact("showData"));
+        return view("student1",compact("showData"));
     }
 
 
