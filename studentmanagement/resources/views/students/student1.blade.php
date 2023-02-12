@@ -24,6 +24,14 @@
 
 <div class="container">
     <!-- <a href="{{url('/adddata')}}" class="btn btn-primary my-3">Add Student</a> -->
+
+      <form class="form-inline my-2 my-lg-0">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+       </form> 
+
+
+
     <a href="{{route('student.adddata')}}" class="btn btn-primary my-3">Add Student</a>
     @if(Session::has('msg'))
     <p class="alert alert-success"> {{Session::get('msg')}}</p>

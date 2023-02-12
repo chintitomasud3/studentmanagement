@@ -13,10 +13,22 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        $search=$request['search']??"";
+
+        if($search!=""){
+            
+            $showData=Student::where('FirstName','LIKE',"%$search%")->paginate(3);
+            //print_r($showData);
+        }
+        else {
+            $showData=Student::paginate(3);
+
+        }
         //$showData=Student::all();
-        $showData=Student::paginate(3);
+       // $showData=Student::paginate(3);
 
 
         //return response()->json($showData);
