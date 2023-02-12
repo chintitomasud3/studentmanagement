@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -65,5 +66,16 @@ Route::group(['middleware' => 'auth'], function () {
    Route::get('/coursedit/{course}',[CourseController::class,'edit'])->name('course.edit');
    Route::post('/courseupdate/{id}', [CourseController::class, 'update']);
    Route::get('/coursedestroy/{id}', [CourseController::class, 'destroy']);
+
+
+
+   // Teacher
+
+   Route::get('/teacher',[TeacherController::class,'index']);
+   Route::get('/teachercreate',[TeacherController::class,'create'])->name('teacher.create');
+   Route::post('/teacherstore',[TeacherController::class,'store'])->name('teacher.store');
+   Route::get('/teacheredit/{course}',[TeacherController::class,'edit'])->name('teacher.edit');
+   Route::post('/teacherupdate/{id}', [TeacherController::class, 'update']);
+   Route::get('/teacherdestroy/{id}', [TeacherController::class, 'destroy']);
 
 });
