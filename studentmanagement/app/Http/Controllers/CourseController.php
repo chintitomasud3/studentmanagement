@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CourseController extends Controller
 {
@@ -14,7 +15,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $showData=Course::paginate(5);
+        //print_r($showData);
+        return view('course.index',compact('showData'));
     }
 
     /**
@@ -24,7 +27,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+         return view('course.create');
     }
 
     /**
@@ -35,7 +38,27 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $rules=[
+        "name"=>"required",
+        "description"=>"required"
+       ];
+       $cm=[
+        'Course.required'=>'Enter your Course',
+        'description.required'=>'Enter your description',
+        
+
+       ];
+
+       $this->validate($request,$rules,$cm);
+              
+       $student=new Course();
+       $student->name=$request->name;
+       $student->description=$request->description;
+       
+       $student->save();
+       Session::flash('msg',"Data successfully Added");
+         //return $request->all();
+         return redirect("/course") ;
     }
 
     /**
@@ -55,9 +78,10 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit($course=null)
     {
-        //
+        $courseedit=Course::find($course);
+        return view("course.edit",compact('courseedit'));
     }
 
     /**
@@ -67,9 +91,29 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(Request $request,$id)
     {
-        //
+        $rules=[
+            "name"=>"required",
+            "description"=>"required"
+           ];
+           $cm=[
+            'Course.required'=>'Enter your Course',
+            'description.required'=>'Enter your description',
+            
+    
+           ];
+    
+           $this->validate($request,$rules,$cm);
+          
+           $course=Course::find($id);
+           $course->name=$request->name;
+           $course->description=$request->description;
+           
+           $course->save();
+           Session::flash('msg',"Data successfully Added");
+             //return $request->all();
+             return redirect("/course") ;
     }
 
     /**
@@ -78,8 +122,11 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy($id=null)
     {
-        //
+        $course=Course::find($id);
+        $course->delete();
+        Session::flash('msg',"Data successfully deleted");
+            return redirect("/course");
     }
 }

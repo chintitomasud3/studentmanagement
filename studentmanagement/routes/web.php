@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\EnrollmentController;
+use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -55,4 +56,14 @@ Route::group(['middleware' => 'auth'], function () {
  
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+  // course
+
+   Route::get('/course',[CourseController::class,'index']);
+   Route::get('/coursecreate',[CourseController::class,'create'])->name('course.create');
+   Route::post('/coursestore',[CourseController::class,'store'])->name('course.store');
+   Route::get('/coursedit/{course}',[CourseController::class,'edit'])->name('course.edit');
+   Route::post('/courseupdate/{id}', [CourseController::class, 'update']);
+   Route::get('/coursedestroy/{id}', [CourseController::class, 'destroy']);
+
 });

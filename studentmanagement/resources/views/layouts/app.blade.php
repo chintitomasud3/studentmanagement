@@ -54,6 +54,9 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{url('/enrollment')}}">Enrollment</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{url('/course')}}">Course</a>
+                                    </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Dropdown
